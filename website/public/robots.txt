@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riverside-tree-service-6f7d3.firebaseapp.com/sitemap.xml

@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans bg-sand-50 text-forest-950 antialiased;
+  }
+  ::selection {
+    @apply bg-river-600 text-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-forest-600 to-river-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:from-forest-700 hover:to-river-700 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-river-500 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-forest-200 bg-white/70 px-6 py-3 text-sm font-semibold text-forest-800 backdrop-blur transition-all duration-300 hover:border-river-400 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-river-500 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-river-600;
+  }
+  .card {
+    @apply rounded-3xl border border-forest-100 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift;
+  }
+}
+
+/* ─── Scroll progress bar ─── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #3c6036, #1f6a8e);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ─── Base reveal state (hidden) ─── */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale,
+.reveal-blur {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Fade up (default) */
+.reveal {
+  transform: translateY(32px);
+}
+
+/* Slide from left */
+.reveal-left {
+  transform: translateX(-48px);
+}
+
+/* Slide from right */
+.reveal-right {
+  transform: translateX(48px);
+}
+
+/* Scale up */
+.reveal-scale {
+  transform: scale(0.92);
+}
+
+/* Blur in */
+.reveal-blur {
+  transform: translateY(16px);
+  filter: blur(8px);
+}
+
+/* ─── Visible state ─── */
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible,
+.reveal-blur.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ─── Stagger delays ─── */
+.stagger-1 { transition-delay: 80ms  !important; }
+.stagger-2 { transition-delay: 160ms !important; }
+.stagger-3 { transition-delay: 240ms !important; }
+.stagger-4 { transition-delay: 320ms !important; }
+.stagger-5 { transition-delay: 400ms !important; }
+.stagger-6 { transition-delay: 480ms !important; }
+
+/* ─── Parallax layer (moves slightly on scroll, driven by JS) ─── */
+.parallax {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ─── Counter number roll-up ─── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-visible {
+  animation: count-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Shimmer line under section headings ─── */
+.heading-line {
+  position: relative;
+  display: inline-block;
+}
+.heading-line::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #4f7a45, #2a85ad);
+  border-radius: 9999px;
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+.is-visible .heading-line::after,
+.heading-line.is-visible::after {
+  width: 100%;
+}
+
+/* ─── Hover lift on images ─── */
+.img-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px -12px rgba(15, 30, 12, 0.28);
+}
