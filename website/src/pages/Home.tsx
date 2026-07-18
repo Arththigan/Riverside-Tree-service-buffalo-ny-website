@@ -9,22 +9,35 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative min-h-[92vh] overflow-hidden">
+      <section className="relative overflow-hidden lg:min-h-[92vh] lg:max-h-[860px]">
         <div className="absolute inset-0">
+          {/* Mobile: static image (no video download) */}
+          <img
+            src="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=480&q=60"
+            alt="Mature trees in Buffalo NY"
+            className="h-full w-full object-cover lg:hidden"
+            width="480"
+            height="320"
+            fetchPriority="high"
+            loading="eager"
+            decoding="sync"
+          />
+          {/* Desktop: video — capped height to reduce page weight & improve LCP */}
           <video
             autoPlay muted loop playsInline
-            className="h-full w-full object-cover parallax"
+            className="hidden h-full w-full object-cover parallax lg:block lg:max-h-[860px]"
             data-speed="0.08"
-            poster="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=1280&q=60&fm=webp"
+            width="1280"
+            height="720"
+            poster="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=640&q=30"
           >
             <source src="/trees_river.mp4" type="video/mp4" />
-            <img src="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=1280&fm=webp" alt="Mature trees in Buffalo NY" className="h-full w-full object-cover" width="1280" height="853" fetchPriority="high" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-br from-forest-950/80 via-forest-900/70 to-river-950/80" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(79,122,69,0.35),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(42,133,173,0.4),transparent_55%)]" />
         </div>
 
-        <div className="relative container-page flex min-h-[92vh] flex-col justify-center pt-24 pb-16">
+        <div className="relative container-page flex min-h-[92vh] flex-col justify-center pt-24 pb-8 sm:pb-16 lg:pb-48">
           <div className="max-w-2xl">
             <span className="eyebrow text-river-200 animate-fade-in">
               <MapPin className="h-3.5 w-3.5" /> {ADDRESS}
@@ -56,9 +69,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats bar */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="container-page pb-8">
+        {/* Stats bar — inline on mobile, absolute on desktop */}
+        <div className="relative lg:absolute lg:bottom-0 lg:left-0 lg:right-0">
+          <div className="container-page pb-6 lg:pb-8">
             <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md sm:grid-cols-4">
               {stats.map((s, i) => (
                 <div key={s.label} className={`bg-gradient-to-br from-forest-950/40 to-river-950/40 px-5 py-5 text-center reveal stagger-${i + 1}`}>

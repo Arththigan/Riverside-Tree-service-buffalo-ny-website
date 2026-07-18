@@ -112,16 +112,13 @@ export function Header() {
     >
       <div className="container-page flex h-16 items-center justify-between sm:h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src="/Assests/Riverside_Tree_Service_logo_202607172018-Photoroom.png"
-            alt="Riverside Tree Service"
-            width="160"
-            height="80"
-            className={`h-16 w-auto sm:h-20 transition-all duration-300 ${
-              transparent
-                ? 'brightness-0 invert'
-                : ''
+        <Link to="/" className="flex items-center" aria-label="Riverside Tree Service - Home">
+          <div
+            role="img"
+            aria-label="Riverside Tree Service"
+            style={{ backgroundImage: 'url(/Assests/Riverside_Tree_Service_logo_202607172018-Photoroom.png)' }}
+            className={`h-16 w-32 bg-contain bg-no-repeat bg-center sm:h-20 sm:w-40 transition-all duration-300 ${
+              transparent ? 'brightness-0 invert' : ''
             }`}
           />
         </Link>
@@ -212,14 +209,12 @@ export function Footer() {
       <div className="container-page py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link to="/">
-              <img
-                src="/Assests/Riverside_Tree_Service_logo_202607172018-Photoroom.png"
-                alt="Riverside Tree Service"
-                className="h-14 w-auto"
-                width="140"
-                height="56"
-                decoding="async"
+            <Link to="/" aria-label="Riverside Tree Service - Home">
+              <div
+                role="img"
+                aria-label="Riverside Tree Service"
+                style={{ backgroundImage: 'url(/Assests/Riverside_Tree_Service_logo_202607172018-Photoroom.png)' }}
+                className="h-14 w-36 bg-contain bg-no-repeat bg-left"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-forest-200/80">
@@ -283,7 +278,13 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-forest-300/70 sm:flex-row">
           <p>© {new Date().getFullYear()} Riverside Tree Service. All rights reserved.</p>
-          <p>Licensed & insured · ISA Certified Arborists · NY LIC #RS-TREE-2005</p>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="transition hover:text-forest-100">Privacy Policy</Link>
+            <span aria-hidden="true">·</span>
+            <Link to="/terms" className="transition hover:text-forest-100">Terms & Conditions</Link>
+            <span aria-hidden="true">·</span>
+            <p>Licensed & insured · ISA Certified Arborists · NY LIC #RS-TREE-2005</p>
+          </div>
         </div>
       </div>
     </footer>

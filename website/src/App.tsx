@@ -7,6 +7,8 @@ import AboutPage from './pages/About';
 import GalleryPage from './pages/Gallery';
 import FAQPage from './pages/FAQ';
 import ContactPage from './pages/Contact';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           {/* Fallback */}
           <Route path="*" element={<Home />} />
         </Routes>
