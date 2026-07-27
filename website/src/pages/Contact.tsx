@@ -1,11 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { PageHero } from '../components/Layout';
 import { PHONE, PHONE_HREF, ADDRESS, EMAIL, EMAIL_HREF } from '../data';
 
+const FORM_BASE_URL = 'https://link.kdlead.com/widget/form/fs4k6UYFxASEe2OnNuTR';
+
 export default function ContactPage() {
-  // Load the kdlead embed script once when the page mounts
+  // Generate a fresh cache-busting key every time this page mounts.
+  // This forces the iframe to reload from scratch, clearing any
+  // "submission in progress" state the third-party form may have cached.
+  const [formKey, setFormKey] = useState(() => Date.now());
+
   useEffect(() => {
+    // Always reset the key on mount so revisiting the page gives a clean form
+    setFormKey(Date.now());
+
+    // Load the kdlead embed script once globally
     const scriptId = 'kdlead-embed-script';
     if (!document.getElementById(scriptId)) {
       const script = document.createElement('script');
@@ -39,7 +49,7 @@ export default function ContactPage() {
             <div className="mt-8 space-y-4">
               <a
                 href={PHONE_HREF}
-                className="flex items-center gap-4 rounded-2xl border border-forest-100 bg-white p-5 shadow-soft transition hover:border-forest-300"
+                className="reveal stagger-1 flex min-w-0 items-center gap-3 rounded-2xl border border-forest-100 bg-white p-4 shadow-soft transition hover:border-forest-300 sm:gap-4 sm:p-5"
               >
                 <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-forest-50 to-river-50 text-river-600">
                   <Phone className="h-5 w-5" />
@@ -52,18 +62,18 @@ export default function ContactPage() {
 
               <a
                 href={EMAIL_HREF}
-                className="flex items-center gap-4 rounded-2xl border border-forest-100 bg-white p-5 shadow-soft transition hover:border-forest-300"
+                className="reveal stagger-2 flex min-w-0 items-center gap-3 rounded-2xl border border-forest-100 bg-white p-4 shadow-soft transition hover:border-forest-300 sm:gap-4 sm:p-5"
               >
                 <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-forest-50 to-river-50 text-river-600">
                   <Mail className="h-5 w-5" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-widest text-forest-500">Email</p>
                   <p className="mt-0.5 font-semibold text-forest-900">{EMAIL}</p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 rounded-2xl border border-forest-100 bg-white p-5 shadow-soft">
+              <div className="reveal stagger-3 flex min-w-0 items-center gap-3 rounded-2xl border border-forest-100 bg-white p-4 shadow-soft sm:gap-4 sm:p-5">
                 <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-forest-50 to-river-50 text-river-600">
                   <Clock className="h-5 w-5" />
                 </span>
@@ -74,7 +84,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 rounded-2xl border border-forest-100 bg-white p-5 shadow-soft">
+              <div className="reveal stagger-4 flex min-w-0 items-center gap-3 rounded-2xl border border-forest-100 bg-white p-4 shadow-soft sm:gap-4 sm:p-5">
                 <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-forest-50 to-river-50 text-river-600">
                   <MapPin className="h-5 w-5" />
                 </span>
@@ -86,11 +96,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Embedded form */}
-          <div className="reveal rounded-3xl border border-forest-100 bg-white shadow-lift overflow-hidden">
+          {/* Embedded form — key forces full remount on every page visit */}
+          <div className="reveal-right rounded-3xl border border-forest-100 bg-white shadow-lift overflow-hidden">
             <iframe
-              src="https://link.kdlead.com/widget/form/fs4k6UYFxASEe2OnNuTR"
-              style={{ width: '100%', height: '716px', border: 'none', borderRadius: '8px' }}
+              key={formKey}
+              src={`${FORM_BASE_URL}?v=${formKey}`}
+              style={{ width: '100%', height: 'min(760px, 85dvh)', minHeight: '620px', border: 'none', borderRadius: '8px' }}
               id="inline-fs4k6UYFxASEe2OnNuTR"
               data-layout='{"id":"INLINE"}'
               data-trigger-type="alwaysShow"

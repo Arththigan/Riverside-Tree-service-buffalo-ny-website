@@ -9,6 +9,9 @@ import FAQPage from './pages/FAQ';
 import ContactPage from './pages/Contact';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ReviewsPage from './pages/Reviews';
+import ProcessPage from './pages/Process';
+import ServiceAreaPage from './pages/ServiceArea';
 
 export default function App() {
   return (
@@ -24,6 +27,9 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/service-area" element={<ServiceAreaPage />} />
           {/* Fallback */}
           <Route path="*" element={<Home />} />
         </Routes>

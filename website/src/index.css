@@ -5,9 +5,26 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
   body {
     @apply font-sans bg-sand-50 text-forest-950 antialiased;
+    overflow-wrap: anywhere;
+    overflow-x: clip;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
   }
   ::selection {
     @apply bg-river-600 text-white;
@@ -16,7 +33,7 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-8;
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-forest-600 to-river-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:from-forest-700 hover:to-river-700 hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-river-500 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50;
@@ -32,6 +49,20 @@
   }
 }
 
+main,
+section,
+.container-page,
+.container-page > * {
+  min-width: 0;
+}
+
+.mobile-menu {
+  max-height: calc(100dvh - 4rem - env(safe-area-inset-top));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
 /* ─── Scroll progress bar ─── */
 #scroll-progress {
   position: fixed;
@@ -45,44 +76,54 @@
   pointer-events: none;
 }
 
+header {
+  padding-top: env(safe-area-inset-top);
+}
+
 /* ─── Base reveal state (hidden) ─── */
 .reveal,
 .reveal-left,
 .reveal-right,
 .reveal-scale,
-.reveal-blur {
+.reveal-blur,
+.reveal-flip {
   opacity: 0;
   will-change: opacity, transform;
   transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Fade up (default) */
 .reveal {
-  transform: translateY(32px);
+  transform: translateY(40px);
 }
 
 /* Slide from left */
 .reveal-left {
-  transform: translateX(-48px);
+  transform: translateX(-56px);
 }
 
 /* Slide from right */
 .reveal-right {
-  transform: translateX(48px);
+  transform: translateX(56px);
 }
 
 /* Scale up */
 .reveal-scale {
-  transform: scale(0.92);
+  transform: scale(0.88);
 }
 
 /* Blur in */
 .reveal-blur {
-  transform: translateY(16px);
-  filter: blur(8px);
+  transform: translateY(20px);
+  filter: blur(10px);
+}
+
+/* Flip up (cards) */
+.reveal-flip {
+  transform: perspective(600px) rotateX(12deg) translateY(28px);
 }
 
 /* ─── Visible state ─── */
@@ -90,24 +131,41 @@
 .reveal-left.is-visible,
 .reveal-right.is-visible,
 .reveal-scale.is-visible,
-.reveal-blur.is-visible {
+.reveal-blur.is-visible,
+.reveal-flip.is-visible {
   opacity: 1;
   transform: none;
   filter: none;
 }
 
 /* ─── Stagger delays ─── */
-.stagger-1 { transition-delay: 80ms  !important; }
-.stagger-2 { transition-delay: 160ms !important; }
-.stagger-3 { transition-delay: 240ms !important; }
-.stagger-4 { transition-delay: 320ms !important; }
-.stagger-5 { transition-delay: 400ms !important; }
-.stagger-6 { transition-delay: 480ms !important; }
+.stagger-1 { transition-delay: 60ms  !important; }
+.stagger-2 { transition-delay: 130ms !important; }
+.stagger-3 { transition-delay: 200ms !important; }
+.stagger-4 { transition-delay: 270ms !important; }
+.stagger-5 { transition-delay: 340ms !important; }
+.stagger-6 { transition-delay: 410ms !important; }
 
 /* ─── Parallax layer (moves slightly on scroll, driven by JS) ─── */
 .parallax {
   will-change: transform;
   transition: transform 0.1s linear;
+}
+
+/* ─── Hero entry animations ─── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ─── Counter number roll-up ─── */
@@ -148,4 +206,95 @@
 .img-hover:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 24px 48px -12px rgba(15, 30, 12, 0.28);
+}
+
+@media (hover: none) {
+  .gallery-label {
+    opacity: 1 !important;
+    bottom: 0.75rem !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(28px);
+  }
+
+  .card {
+    border-radius: 1.25rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .home-hero-title {
+    font-size: 1.875rem;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .home-hero-address {
+    align-items: flex-start;
+    display: flex;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    line-height: 1.45;
+    white-space: normal;
+    width: 100%;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-menu {
+    max-height: calc(100dvh - 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-blur,
+  .reveal-flip {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .parallax {
+    transform: none !important;
+  }
+}
+
+/* ─── Transparent hero navbar: force white text ─── */
+header[data-transparent="true"] a,
+header[data-transparent="true"] nav a,
+header[data-transparent="true"] button {
+  color: #ffffff !important;
+}
+header[data-transparent="true"] a:hover,
+header[data-transparent="true"] nav a:hover {
+  color: rgba(255,255,255,0.80) !important;
+}
+/* Active nav link keeps underline but stays white */
+header[data-transparent="true"] nav a.active {
+  color: #ffffff !important;
+}
+/* Keep the CTA button gradient unchanged */
+header[data-transparent="true"] .btn-primary {
+  color: #ffffff !important;
 }

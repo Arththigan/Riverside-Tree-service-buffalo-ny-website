@@ -1,4 +1,3 @@
-import { useReveal } from '../components/Layout';
 import { Link } from 'react-router-dom';
 import { Shield, Award, Clock, Users } from 'lucide-react';
 import { stats, PHONE_HREF, PHONE } from '../data';
@@ -27,7 +26,6 @@ const values = [
 ];
 
 export default function AboutPage() {
-  useReveal();
 
   return (
     <>
@@ -59,16 +57,16 @@ export default function AboutPage() {
             <p className="reveal mb-3 text-sm font-semibold uppercase tracking-widest text-forest-500">
               Who We Are
             </p>
-            <h2 className="reveal text-3xl font-bold text-forest-900 sm:text-4xl">
+            <h2 className="reveal stagger-1 text-3xl font-bold text-forest-900 sm:text-4xl">
               Buffalo's Trusted Tree Care Experts
             </h2>
-            <p className="reveal mt-6 text-lg leading-relaxed text-forest-700">
+            <p className="reveal stagger-2 mt-6 text-lg leading-relaxed text-forest-700">
               Riverside Tree Service was founded with one goal: bring honest, skilled tree care to Buffalo and the surrounding communities. What started as a small crew with a single truck has grown into one of Western New York's most trusted arborist operations.
             </p>
-            <p className="reveal mt-4 text-lg leading-relaxed text-forest-700">
+            <p className="reveal stagger-3 mt-4 text-lg leading-relaxed text-forest-700">
               We serve homeowners, property managers, and municipalities across Erie and Niagara Counties. From routine pruning to emergency storm response, we show up on time, communicate clearly, and leave your yard cleaner than we found it.
             </p>
-            <div className="reveal mt-8 flex flex-wrap gap-4">
+            <div className="reveal stagger-4 mt-8 flex flex-wrap gap-4">
               <a
                 href={PHONE_HREF}
                 className="btn-primary"
@@ -83,10 +81,10 @@ export default function AboutPage() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-6">
-            {stats.map((s) => (
+            {stats.map((s, i) => (
               <div
                 key={s.label}
-                className="reveal-scale rounded-2xl bg-forest-50 p-8 text-center"
+                className={`reveal-scale stagger-${i + 1} rounded-2xl bg-forest-50 p-4 text-center sm:p-8`}
               >
                 <p className="text-4xl font-extrabold text-forest-600">{s.value}</p>
                 <p className="mt-2 text-sm font-medium text-forest-700">{s.label}</p>
@@ -108,8 +106,8 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((v) => (
-              <div key={v.title} className="reveal-scale rounded-2xl bg-white p-8 shadow-soft">
+            {values.map((v, i) => (
+              <div key={v.title} className={`reveal-flip stagger-${i + 1} rounded-2xl bg-white p-8 shadow-soft`}>
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-forest-100 text-forest-600">
                   <v.icon size={24} />
                 </div>
@@ -124,13 +122,13 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="section-pad bg-forest-800">
         <div className="container-page text-center">
-          <h2 className="reveal text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="reveal font-bold text-white sm:text-4xl text-3xl">
             Ready to Work Together?
           </h2>
-          <p className="reveal mx-auto mt-4 max-w-xl text-lg text-forest-200">
+          <p className="reveal stagger-1 mx-auto mt-4 max-w-xl text-lg text-forest-200">
             Get a free, no-pressure estimate from a certified arborist. We'll come to your property and give you a clear quote.
           </p>
-          <div className="reveal mt-8 flex flex-wrap justify-center gap-4">
+          <div className="reveal stagger-2 mt-8 flex flex-wrap justify-center gap-4">
             <Link to="/contact" className="btn-primary">
               Get a Free Estimate
             </Link>

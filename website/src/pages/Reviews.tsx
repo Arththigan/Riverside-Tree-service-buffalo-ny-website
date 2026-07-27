@@ -48,7 +48,7 @@ export default function ReviewsPage() {
             {allReviews.map((t, idx) => (
               <figure
                 key={t.name}
-                className={`reveal-blur stagger-${(idx % 3) + 1} flex flex-col rounded-3xl border border-forest-100 bg-white p-7 shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all duration-300`}
+                className={`reveal-flip stagger-${(idx % 3) + 1} flex flex-col rounded-3xl border border-forest-100 bg-white p-7 shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all duration-300`}
               >
                 <Quote className="h-8 w-8 text-forest-300" />
                 <blockquote className="mt-4 flex-1 text-base leading-relaxed text-forest-800">

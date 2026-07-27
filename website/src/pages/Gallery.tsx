@@ -49,7 +49,7 @@ export default function GalleryPage() {
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-950/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-forest-800 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bottom-4">
+                <span className="gallery-label absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-forest-800 opacity-0 transition-all duration-300 group-hover:bottom-4 group-hover:opacity-100">
                   {img.label}
                 </span>
               </div>
