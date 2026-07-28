@@ -30,6 +30,17 @@
     <link rel="preload" as="image" href="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=320&q=20" fetchpriority="high" media="(min-width: 1024px)" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" /></noscript>
+    <style>
+      .initial-shell{box-sizing:border-box;min-height:92svh;padding:7rem 1rem 2rem;background:linear-gradient(135deg,#0e1a0d,#1b3a51);color:#fff;font-family:system-ui,sans-serif}
+      .initial-shell__inner{width:100%;max-width:72rem;margin:0 auto}
+      .initial-shell__address{font-size:.7rem;font-weight:700;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;color:#b0d9ec}
+      .initial-shell h1{max-width:42rem;margin:1.25rem 0 0;font-family:Georgia,serif;font-size:clamp(1.875rem,9vw,3.75rem);line-height:1.08}
+      .initial-shell h1 span{display:block;color:#b0d9ec}
+      .initial-shell__copy{max-width:36rem;margin:1.5rem 0 0;font-size:1rem;line-height:1.65;color:#eef6fb}
+      .initial-shell__actions{display:flex;flex-direction:column;gap:.75rem;max-width:30rem;margin-top:2rem}
+      .initial-shell__action{box-sizing:border-box;display:flex;min-height:3.5rem;align-items:center;justify-content:center;border-radius:999px;background:linear-gradient(90deg,#3c6036,#1f6a8e);font-weight:700}
+      @media(min-width:640px){.initial-shell{padding-inline:2rem}.initial-shell__actions{flex-direction:row}.initial-shell__action{padding-inline:2rem}}
+    </style>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -111,7 +122,18 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <section class="initial-shell" aria-hidden="true">
+        <div class="initial-shell__inner">
+          <div class="initial-shell__address">9950 County Rd, Clarence, Buffalo, New York</div>
+          <h1>Buffalo Tree Service <span>done right the first time.</span></h1>
+          <p class="initial-shell__copy">Riverside Tree Service is Buffalo's trusted name for tree removal, trimming, and emergency storm work.</p>
+          <div class="initial-shell__actions">
+            <div class="initial-shell__action">Call Us Now</div>
+          </div>
+        </div>
+      </section>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
