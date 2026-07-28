@@ -216,6 +216,13 @@ header {
 }
 
 @media (max-width: 639px) {
+  .animate-fade-in,
+  .animate-fade-up {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
   .reveal-left,
   .reveal-right {
     transform: translateY(28px);
