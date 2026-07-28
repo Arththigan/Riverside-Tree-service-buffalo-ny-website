@@ -4,12 +4,12 @@ import { galleryImages } from '../data';
 
 const allImages = [
   ...galleryImages,
-  { src: 'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Tree removal in progress', label: 'Removal' },
+  { src: 'https://images.pexels.com/photos/6218318/pexels-photo-6218318.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=600&q=72', alt: 'Professional arborist performing a controlled tree removal', label: 'Removal' },
   { src: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Tall grove of trees', label: 'Grove Care' },
-  { src: 'https://images.pexels.com/photos/1005640/pexels-photo-1005640.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Crown pruning work', label: 'Crown Pruning' },
+  { src: 'https://images.pexels.com/photos/34674271/pexels-photo-34674271.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=600&q=72', alt: 'Professional arborist climbing for crown pruning work', label: 'Crown Pruning' },
   { src: 'https://images.pexels.com/photos/235725/pexels-photo-235725.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Street trees after pruning', label: 'Street Trees' },
   { src: 'https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Tree canopy in Buffalo NY', label: 'Canopy Work' },
-  { src: 'https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Stump after grinding', label: 'Stump Removal' },
+  { src: 'https://images.pexels.com/photos/13937884/pexels-photo-13937884.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=600&q=72', alt: 'Real tree stump prepared for removal', label: 'Stump Removal' },
 ];
 
 export default function GalleryPage() {

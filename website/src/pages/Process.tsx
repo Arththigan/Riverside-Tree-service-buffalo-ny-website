@@ -9,7 +9,7 @@ export default function ProcessPage() {
       <PageHero
         title="How It Works"
         subtitle="A clear, no-surprise process — from first call to final walkthrough."
-        image="https://images.pexels.com/photos/1005640/pexels-photo-1005640.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="https://images.pexels.com/photos/34674271/pexels-photo-34674271.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=1600&q=72"
       />
 
       <section className="relative overflow-hidden bg-gradient-to-br from-forest-900 to-river-900 py-20 text-white sm:py-28">
@@ -47,7 +47,7 @@ export default function ProcessPage() {
         <div className="container-page grid items-center gap-12 lg:grid-cols-2">
           <div className="reveal-left overflow-hidden rounded-3xl shadow-lift img-hover">
             <img
-              src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://images.pexels.com/photos/6218318/pexels-photo-6218318.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=1200&q=72"
               alt="Riverside Tree Service crew at work in Buffalo NY"
               className="h-[420px] w-full object-cover"
             />

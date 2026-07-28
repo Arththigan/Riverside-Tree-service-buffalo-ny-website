@@ -12,18 +12,25 @@ export default function Home() {
       <section className="relative overflow-hidden lg:min-h-[92vh] lg:max-h-[860px]">
         <div className="absolute inset-0">
           {/* Mobile: static image (no video download) */}
-          <img
-            src="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=480&q=50"
-            srcSet="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=320&q=50 320w, https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=480&q=50 480w, https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=768&q=50 768w"
-            sizes="(max-width: 1023px) 100vw, 1px"
-            alt="Mature trees in Buffalo NY"
-            className="h-full w-full object-cover lg:hidden"
-            width="480"
-            height="320"
-            fetchPriority="high"
-            loading="eager"
-            decoding="sync"
-          />
+          <picture className="contents">
+            <source
+              type="image/avif"
+              srcSet="/Assests/hero-mobile-320.avif 320w, /Assests/hero-mobile-480.avif 480w, /Assests/hero-mobile-768.avif 768w"
+              sizes="(max-width: 1023px) 100vw, 1px"
+            />
+            <img
+              src="/Assests/hero-mobile-480.webp"
+              srcSet="/Assests/hero-mobile-320.webp 320w, /Assests/hero-mobile-480.webp 480w, /Assests/hero-mobile-768.webp 768w"
+              sizes="(max-width: 1023px) 100vw, 1px"
+              alt="Mature trees in Buffalo NY"
+              className="h-full w-full object-cover lg:hidden"
+              width="480"
+              height="320"
+              fetchPriority="high"
+              loading="eager"
+              decoding="sync"
+            />
+          </picture>
           {/* Desktop: video — capped height to reduce page weight & improve LCP */}
           <video
             autoPlay muted loop playsInline

@@ -13,7 +13,7 @@ export const services = [
     slug: 'tree-removal',
     desc: 'Safe, controlled removal of hazardous, dead, or unwanted trees of any size — including crane-assisted takedowns in tight Buffalo lots.',
     points: ['Stump grinding included', 'Crane-assisted takedowns', 'Hazard assessments'],
-    image: 'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=600&q=70',
+    image: 'https://images.pexels.com/photos/6218318/pexels-photo-6218318.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=900&q=72',
   },
   {
     icon: Scissors,
@@ -21,7 +21,7 @@ export const services = [
     slug: 'trimming-pruning',
     desc: 'Structural pruning that improves canopy health, removes deadwood, and reduces storm risk — done to ISA arborist standards.',
     points: ['Crown thinning & raising', 'Deadwood removal', 'Storm prep pruning'],
-    image: 'https://images.pexels.com/photos/1005640/pexels-photo-1005640.jpeg?auto=compress&cs=tinysrgb&w=600&q=70',
+    image: 'https://images.pexels.com/photos/34674271/pexels-photo-34674271.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=900&q=72',
   },
   {
     icon: TreePine,
@@ -29,7 +29,7 @@ export const services = [
     slug: 'stump-grinding',
     desc: 'We grind stumps 6–8 inches below grade and clean up every chip, so your yard is ready for sod, planting, or a new structure.',
     points: ['Below-grade grinding', 'Debris haul-away', 'Sod-ready finish'],
-    image: 'https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=600&q=70',
+    image: 'https://images.pexels.com/photos/13937884/pexels-photo-13937884.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=900&q=72',
   },
   {
     icon: Snowflake,
@@ -119,10 +119,10 @@ export const serviceAreas = [
 ];
 
 export const galleryImages = [
-  { src: 'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=400&fm=webp', alt: 'Large tree removal in a Buffalo residential yard', label: 'Tree Removal' },
+  { src: 'https://images.pexels.com/photos/6218318/pexels-photo-6218318.jpeg?auto=compress&cs=tinysrgb&w=600&fm=webp', alt: 'Professional arborist using a chainsaw while secured in a tree', label: 'Tree Removal' },
   { src: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&fm=webp', alt: 'Dense grove of tall trees in Western New York', label: 'Grove Care' },
-  { src: 'https://images.pexels.com/photos/1005640/pexels-photo-1005640.jpeg?auto=compress&cs=tinysrgb&w=400&fm=webp', alt: 'Arborist trimming a mature tree', label: 'Crown Trimming' },
+  { src: 'https://images.pexels.com/photos/34674271/pexels-photo-34674271.jpeg?auto=compress&cs=tinysrgb&w=600&fm=webp', alt: 'Professional arborist climbing a mature tree for pruning', label: 'Crown Trimming' },
   { src: 'https://images.pexels.com/photos/235725/pexels-photo-235725.jpeg?auto=compress&cs=tinysrgb&w=400&fm=webp', alt: 'Tree-lined street after professional pruning', label: 'Pruning & Shaping' },
-  { src: 'https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=400&fm=webp', alt: 'Stump grinding after tree removal', label: 'Stump Grinding' },
+  { src: 'https://images.pexels.com/photos/13937884/pexels-photo-13937884.jpeg?auto=compress&cs=tinysrgb&w=600&fm=webp', alt: 'Real tree stump ready for professional grinding', label: 'Stump Grinding' },
   { src: 'https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=400&fm=webp', alt: 'Sunlight through tall trees in Buffalo NY', label: 'Storm Cleanup' },
 ];
